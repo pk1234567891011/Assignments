@@ -3,6 +3,15 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="pull-right">
+            <div id="dash">
+            	Dashboard > Configuration Management
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="pull-right">
             <div class="create_div">
             <a  href="{{route('configuration.create')}}" class="create_link">Create Configuration</a>
             </div>

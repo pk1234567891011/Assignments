@@ -3,6 +3,15 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="pull-right">
+            <div id="dash">
+            	Dashboard > CMS Management
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="pull-right">
             <div style="position: absolute; margin-right: 20px">
             <a  href="{{route('cms.create')}}" style="position: absolute;margin-left: -203px; top: 100px">Create Cms pages</a>
             </div>

@@ -18,7 +18,7 @@ class ChartController extends Controller
         $chart = Charts::database($users, 'bar', 'highcharts')
 					->title("Monthly new Register Users")
 					->elementLabel("Total Users")
-					->dimensions(700, 500)
+					->dimensions(600, 500)
 					->groupByMonth(date('Y'), true);
         return view('reports.users',compact('chart'));
 	}
@@ -29,7 +29,7 @@ class ChartController extends Controller
 		$chart = Charts::database($sales, 'bar', 'highcharts')
 					->title("Monthly Product Sales")
 					->elementLabel("Total orders")
-					->dimensions(700, 500)
+					->dimensions(600, 500)
 					->groupByMonth(date('Y'), true);
 		return view('reports.sales',compact('chart'));
 	}
@@ -44,7 +44,7 @@ class ChartController extends Controller
 		$chart = Charts::database($coupon, 'bar', 'highcharts')
 					->title("Monthly Coupon Used")
 					->elementLabel("Total Coupons Used")
-					->dimensions(700, 500)
+					->dimensions(600, 500)
 					->groupByMonth(date('Y'), true);
 		return view('reports.coupons',compact('chart'));
 	}

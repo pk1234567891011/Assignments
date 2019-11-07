@@ -1,6 +1,14 @@
 @extends('admin.admin_template')
 @section('content')
-
+<div class="row">
+    <div class="col-sm-12">
+        <div class="pull-right">
+            <div id="dash">
+            	Dashboard > Track Order
+            </div>
+        </div>
+    </div>
+</div>
 	@if($message=Session::get('success'))
 		<div class="alert alert-success">
 			<p>{{ $message }}</p>

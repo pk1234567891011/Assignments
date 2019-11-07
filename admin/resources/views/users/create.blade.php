@@ -34,7 +34,7 @@
             </div>
             <div class="col-xs-12">
                 <div class="form-group">
-                    <strong>Password Confirmation :</strong>
+                    <strong>Password  :</strong>
                     <input type="password" class="form-control" name="password" required>
                 </div>
             </div>

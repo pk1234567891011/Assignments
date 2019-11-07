@@ -3,6 +3,15 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="pull-right">
+            <div id="dash">
+            	Dashboard > Banner Management
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="pull-right">
             <div class="create_div" >
             	<a class="create_link"  href="{{route('banner.create')}}"
            			>Create Banner</a>

@@ -596,7 +596,9 @@ class HomesController extends Controller
        
     }
     public function checkout(Request $request)
-    {  $user_id=Auth::User()->id;
+    {  
+        
+       $user_id=Auth::User()->id;
        $userAddress=Address::where('userId',$user_id)->first();
       
        $userDetails=Users::where('id',$user_id)->first();
@@ -611,11 +613,28 @@ class HomesController extends Controller
        
        if($request->isMethod('post')){
            $data=$request->all();
-           if(empty($data['billing_name']) || empty($data['billing_address']) || empty($data['billing_city']) ||empty($data['billing_pincode']) ||empty($data['billing_mobile']) ||
-            empty($data['billing_state']) || empty($data['billing_country'])) {
-            return redirect()->back()->with('flash_message_error',"Please fill all the fields of checkout");
+           $request->validate([
+            'billing_name'=>'required|regex:/[A-Za-z\-\_]+/',
+            'billing_address'=>'required|',
+            'billing_city'=>'required|regex:/[A-Za-z\-\_]+/',
+            'billing_state'=>'required|regex:/[A-Za-z\-\_]+/',
+            'billing_pincode'=>'required|numeric|regex:/\d{6}/',
+            'billing_mobile'=>'required|numeric|regex:/\d{10}/',
+            'billing_country'=>'required',
+            'shipping_name'=>'required|regex:/[A-Za-z\-\_]+/',
+            'shipping_address'=>'required|',
+            'shipping_city'=>'required|regex:/[A-Za-z\-\_]+/',
+            'shipping_state'=>'required|regex:/[A-Za-z\-\_]+/',
+            'shipping_pincode'=>'required|numeric|regex:/\d{6}/',
+            'shipping_mobile'=>'required|numeric|regex:/\d{10}/',
+            'shipping_country'=>'required',
 
-           }
+        ]);
+        //    if(empty($data['billing_name']) || empty($data['billing_address']) || empty($data['billing_city']) ||empty($data['billing_pincode']) ||empty($data['billing_mobile']) ||
+        //     empty($data['billing_state']) || empty($data['billing_country'])) {
+        //     return redirect()->back()->with('flash_message_error',"Please fill all the fields of checkout");
+
+        //    }
            $addressCount=Address::where('userId',$user_id)->count();
            if($addressCount==0){
             $billing=new Address();

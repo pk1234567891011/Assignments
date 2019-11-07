@@ -2618,3 +2618,11 @@ ol.progtrckr li.progtrckr-todo:before {
   position: absolute;
   top: 22px;
   }
+  #dash{
+    position: absolute;
+    left: 20px;
+    top: 65px;
+    background-color: gray;
+    height: 26px;
+    font-size: 20px;
+  }

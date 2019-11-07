@@ -17,11 +17,9 @@ $mainCategories = Controller::mainCategories();
 					<div class="col-sm-6">
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>
+									<span style="color:green">{{Auth::User()->firstname}}</span></a></li>
+								<li><a href="{{url('logouts')}}"><i class="fa fa-lock"></i>Logout</a></li>
 							</ul>
 						</div>
 					</div>
@@ -68,7 +66,7 @@ $mainCategories = Controller::mainCategories();
 								<li><a href="{{url('orders')}}"><i class="fa fa-crosshairs"></i>Orders</a></li>
 								<li><a href="{{url('cart')}}"><i class="fa fa-shopping-cart"></i>Cart </a></li>
 								<li><a href="{{url('track')}}"><i class="fa fa-shopping-cart"></i>Track Order</a></li>
-								<li><a href="{{url('logouts')}}"><i class="fa fa-lock"></i>Logout</a></li>
+								
 							</ul>
 						</div>
 					</div>

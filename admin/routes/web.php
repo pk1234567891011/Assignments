@@ -61,8 +61,7 @@ Route::get('usersregistered', 'ChartController@index');
 Route::get('SalesReport', 'ChartController@sales');
 Route::get('CouponUsed', 'ChartController@couponused');
 Route::get('logout', 'MainController@logout');
-Route::resource('homes','HomesController');
-Route::resource('login','HomesController');
+//Route::resource('login','HomesController');
 Route::get('/login', 'HomeController@login')->name('login');
 Route::match(['GET','POST'],'/login-register','HomesController@register');
 
@@ -73,9 +72,9 @@ Route::get('/products/{url}','HomesController@products');
 Route::match(['GET','POST'],'forgot-password','HomesController@forgotPassword');
 
 Route::group(['middleware'=>['frontlogin']],function(){
+    Route::resource('homes','HomesController');
     Route::match(['GET','POST'],'account','HomesController@account');
     Route::post('/check-user-pwd','HomesController@chkUserPassword');
-  
     Route::get('prod/{id}','HomesController@prod');
     //add to cart
     Route::match(['GET','POST'],'add-cart','HomesController@addtocart');

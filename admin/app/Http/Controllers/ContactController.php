@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contact;
+use Mail;
 class ContactController extends Controller
 {
     /**
@@ -64,7 +65,8 @@ class ContactController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contact = Contact::find($id);
+        return view('contact.reply',compact('contact'));
     }
 
     /**
@@ -76,7 +78,21 @@ class ContactController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $contact = Contact::find($id);
+        $request->validate([
+
+            'message'=>'required',
+            
+        ]);
+        $messageData=[
+            'reply'=>$request->message,
+           
+        ];
+        $email=$contact->email;
+            Mail::send('emails.reply', $messageData,function ($message) use ($email) {
+                $message->to($email)->subject('Inquiry Reply');
+            });
+        return redirect()->route('contact.index')->with('success','Replied successfully');
     }
 
     /**
@@ -87,6 +103,7 @@ class ContactController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Contact::find($id)->delete();
+        return redirect()->route('contact.index')->with('success','Contact deleted successfully');
     }
 }

@@ -1,5 +1,14 @@
 @extends('admin.admin_template')
 @section('content')
+<div class="row">
+    <div class="col-sm-12">
+        <div class="pull-right">
+            <div id="dash">
+            	Dashboard > Order Details
+            </div>
+        </div>
+    </div>
+</div>
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="pull-right">
