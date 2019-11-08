@@ -39,6 +39,7 @@
                         </tr>
                     @endforeach          
                 </table>
+                {{ $orders->links()}}
 			</div>
 		</div>
 	</section><!--/#do_action-->

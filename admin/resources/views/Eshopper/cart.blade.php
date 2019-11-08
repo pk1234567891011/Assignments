@@ -73,7 +73,23 @@
 		<div class="container">
 			<div class="heading">
 				<h3>What would you like to do next?</h3>
-				<p>Choose if you have a discount code .</p>
+				<p>Choose if you have a discount code available.</p>
+				
+				<table style="width:50%">
+					<tr>
+						<th>Coupon Code</th>
+						<th>Percent off</th> 
+					</tr>
+					@foreach($coupon as $offer)
+					<tr> 
+						
+
+						<td>{{$offer->code}}</td>
+						<td>{{$offer->percent_off}}%</td>
+						
+					</tr>
+					@endforeach
+				</table>
 			</div>
 			<div class="row">
 				<div class="col-sm-6">

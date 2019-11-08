@@ -41,7 +41,7 @@
 
                 <div class="panel-body">
 
-                    <form class="form-horizontal" method="POST" id="payment-form" role="form" action="{!! URL::route('addmoney.paypal') !!}" >
+                    <form class="form-horizontal" method="POST" id="payment-form" role="form" action="{!! URL::to('paywithpaypal') !!}" >
 
                         {{ csrf_field() }}
 

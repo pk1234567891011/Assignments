@@ -19,7 +19,7 @@ $mainCategories = Controller::mainCategories();
 							<ul class="nav navbar-nav">
 								<li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>
 									<span style="color:green">{{Auth::User()->firstname}}</span></a></li>
-								<li><a href="{{url('logouts')}}"><i class="fa fa-lock"></i>Logout</a></li>
+								<li><a href="{{url('logouts')}}" style="color:red"><i class="fa fa-lock"></i>Logout</a></li>
 							</ul>
 						</div>
 					</div>

@@ -407,7 +407,7 @@ class HomesController extends Controller
     }
 
     public function cart(Request $request)
-    {   
+    {    
         $userId = Auth::User()->id;
          if(Auth::check()){
            
@@ -417,14 +417,14 @@ class HomesController extends Controller
 
         }
       
-       
+        $coupon=Coupon::all();
         foreach ($userCart as $key => $product) {
             $productDetail = Product::where('id', $product->product_id)->first();
             $image = Product_images::where('product_id', $productDetail->id)->first();
             $userCart[$key]->image = $image->image_name;
         }
        
-        return view('Eshopper.cart', compact('userCart'));
+        return view('Eshopper.cart', compact('userCart','coupon'));
     }
     public function wishlist(Request $request)
     {  
@@ -775,7 +775,7 @@ class HomesController extends Controller
             return redirect('thanks');
         }
         else{
-            return redirect('paywithpaypal');
+            return redirect('/paywithpaypal');
         }
         
     }
@@ -784,13 +784,13 @@ class HomesController extends Controller
         Session::forget('Couponcode');
         $user_email=Auth::User()->email;
         $userCart = Cart::where('user_email', $user_email)->delete();
-        return view("orders.thanks",compact('$user_details','$order_details','$product'));
+        return view("orders.thanks");
     }
 
     public function userOrders()
     {
         $user_id=Auth::User()->id;
-        $orders=UserOrder::with('orders')->where('user_id',$user_id)->orderBy('id','DESC')->get();
+        $orders=UserOrder::with('orders')->where('user_id',$user_id)->orderBy('id','DESC')->paginate(5);
        
         return view('orders.users_orders',compact('orders'));
     }

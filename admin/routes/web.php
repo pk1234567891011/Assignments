@@ -100,15 +100,18 @@ Route::group(['middleware'=>['frontlogin']],function(){
     Route::resource('address','AddressController');
     
     Route::match(['get','post'],'/page/{url}','CMSController@cmsPage');
-   
+    Route::view('/paywithpaypal', 'paywithpaypal');
+    Route::post('/paywithpaypal', 'PaymentController@createPayment')->name('create-payment');
+    Route::get('/confirm', 'PaymentController@confirmPayment')->name('confirm-payment');
+    // Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal','uses' => 'AddMoneyController@payWithPaypal',));
+
+    // Route::post('paypal', array('as' => 'addmoney.paypal','uses' => 'AddMoneyController@postPaymentWithpaypal',));
+    
+    // Route::get('paypal', array('as' => 'payment.status','uses' => 'AddMoneyController@getPaymentStatus',)); 
 });
 
 
-Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal','uses' => 'AddMoneyController@payWithPaypal',));
 
-Route::post('paypal', array('as' => 'addmoney.paypal','uses' => 'AddMoneyController@postPaymentWithpaypal',));
-
-Route::get('paypal', array('as' => 'payment.status','uses' => 'AddMoneyController@getPaymentStatus',));
 
 Auth::routes();
 
