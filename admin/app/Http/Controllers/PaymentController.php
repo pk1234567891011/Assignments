@@ -64,13 +64,13 @@ class PaymentController extends Controller
         $payer->setPaymentMethod('paypal');
 // Create and setup items being paid for.. Could multiple items like: 'item1, item2 etc'.
         $item = new Item();
-        $item->setName('Paypal Payment')->setCurrency('INR')->setQuantity(1)->setPrice($pay_amount);
+        $item->setName('Paypal Payment')->setCurrency('USD')->setQuantity(1)->setPrice($pay_amount);
 // Create item list and set array of items for the item list.
         $itemList = new ItemList();
         $itemList->setItems(array($item));
 // Create and setup the total amount.
         $amount = new Amount();
-        $amount->setCurrency('INR')->setTotal($pay_amount);
+        $amount->setCurrency('USD')->setTotal($pay_amount);
 // Create a transaction and amount and description.
         $transaction = new Transaction();
         $transaction->setAmount($amount)->setItemList($itemList)

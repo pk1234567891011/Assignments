@@ -51,7 +51,7 @@
 
                             <div class="col-md-6">
 
-                                <input id="amount" type="text" class="form-control" name="amount" readonly="readonly"  value="{{ Session::get('grand_total') }}" autofocus>
+                                <input id="amount" type="text" class="form-control" name="amount" readonly="readonly"  value="{{ Session::get('grand_total')*0.014 }}" autofocus>
 
                                 @if ($errors->has('amount'))
 
@@ -75,7 +75,7 @@
 
                                 <button type="submit" class="btn btn-primary">
 
-                                    Paywith Paypal
+                                PayPal with USA currency
 
                                 </button> 
                                 <a href="{{url('homes')}}" class="btn btn-primary">Back To Home</a>           
@@ -85,7 +85,6 @@
                         </div>
 
                     </form>
-
                 </div>
 
             </div>

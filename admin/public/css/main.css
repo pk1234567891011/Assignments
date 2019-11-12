@@ -2615,8 +2615,8 @@ ol.progtrckr li.progtrckr-todo:before {
   }
   #allproduct{
     right: -40px;
-  position: absolute;
-  top: 22px;
+    position: absolute;
+    top: 22px;
   }
   #dash{
     position: absolute;
@@ -2626,3 +2626,10 @@ ol.progtrckr li.progtrckr-todo:before {
     height: 26px;
     font-size: 20px;
   }
+  #order_records{
+    position: absolute;
+    color: blue;
+    font-size: 20px;
+    left: 425px;
+  }
+ 
