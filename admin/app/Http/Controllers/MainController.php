@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Auth;
 use DB;
 use Session;
+use App\Users;
+use App\Roles;
+use Hash;
 class MainController extends Controller
 {
     function index()
@@ -18,22 +21,37 @@ class MainController extends Controller
             'email'   => 'required|email',
             'password'  => 'required'
         ]);
+        
+        $user_details=Users::where('email' ,$request->get('email'))->first();
+        if(!empty( $user_details)){
+            if (Hash::check($request->password,$user_details->password)) {
+                $role=Roles::where('role_id',$user_details->role_id)->first();
+                $user_data = array(
+                    'email'  => $request->get('email'),
+                    'password' => $request->get('password')
+                );
+                if($role->role_id==1 || $role->role_id==2){
+                    if (Auth::attempt($user_data)) {
+                        Session::put('adminSession', $user_data['email']);
+                        return view('admin.admin_template');
+                    } 
+                    else
+                    {
+                        return back()->with('error', 'Wrong Login Details');
+                    }
+                }
+                else{
+                    return back()->with('error', 'You don/t have Permission ');
+                }
+            }
+            else{
+                return back()->with('error', 'Wrong Login Details');
 
-        $user_data = array(
-            'email'  => $request->get('email'),
-            'password' => $request->get('password')
-        );
-
-        if (Auth::attempt($user_data)) {
-            Session::put('adminSession', $user_data['email']);
-            return view('admin.admin_template');
-        } 
-       
-        else
-        {
-            return back()->with('error', 'Wrong Login Details');
+            }
         }
-
+        else {
+            return back()->with('error', 'Email does not exists'); 
+        }
     }
 
     function successlogin()
@@ -42,9 +60,9 @@ class MainController extends Controller
     }
 
     function logout()
-    {
-        Auth::logout();
+    {   
         Session::forget('adminSession');
+        Auth::logout();
         return view('login');
     }
 }
