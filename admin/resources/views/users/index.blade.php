@@ -13,13 +13,14 @@
 		<div class="col-sm-12">
 			<div class="pull-right">
 				<div class="create_div" >
-				<a  href="{{route('users.create')}}" class="create_link">Create users</a>
+				<a  href="{{route('users.create')}}" id="add_cat">Create users</a>
 				</div>
 			</div>
 		</div>
 	</div>
 	@if($message=Session::get('success'))
 		<div class="alert alert-success">
+			<button type="button" class="close" data-dismiss="alert">×</button>
 			<p>{{ $message }}</p>
 		</div>
 	@endif

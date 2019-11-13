@@ -30,7 +30,7 @@
 								</option>
 							@endforeach
 						</select>
-						<input type="text" name="pincode" style="margin-top:10px" id="pincode" placeholder="pincode" value="{{$address->pincode}}">
+						<input type="text" name="pincode" id="pincode" placeholder="pincode" value="{{$address->pincode}}">
 						<input type="text" name="mobile" id="mobile" placeholder="mobile" value="{{$address->mobile}}">
 						<a class="btn btn-xs btn-success" href="{{url('account')}}">Back</a>
 						<button type="submit" class="btn btn-default">Add</button>	

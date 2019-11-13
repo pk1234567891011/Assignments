@@ -34,8 +34,11 @@
     </div>
     <div class="col-xs-12">
         <div class="form-group">
-            <strong>Status :</strong>
-            {!! Form::text('status',null,['placeholder'=>'Status','class'=>'form-control'])!!}
+            <select class="form-control" id="status" name="status">
+                <option value="">Status</option>
+                <option value="0">InActive</option>
+                <option value="1">Active</option>
+            </select>
         </div>
     </div>
 <div class="col-xs-12">

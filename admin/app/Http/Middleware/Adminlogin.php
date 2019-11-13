@@ -14,7 +14,7 @@ class Adminlogin
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {if(empty(Session::has('adminSession')))
+    {  if(empty(Session::has('adminSession')))
         {
             return redirect('/mains');
         }

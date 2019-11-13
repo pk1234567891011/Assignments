@@ -13,13 +13,14 @@
 		<div class="col-sm-12">
 			<div class="pull-right">
 				<div class="create_div">
-					<a  href="{{route('product_attributes.create')}}" class="create_link">Create Attributes</a>
+					<a  href="{{route('product_attributes.create')}}" id="add_cat">Create Attributes</a>
 				</div>
 			</div>
 		</div>
 	</div>
 	@if($message=Session::get('success'))
 	<div class="alert alert-success">
+		<button type="button" class="close" data-dismiss="alert">×</button>
 		<p>{{ $message }}</p>
 	</div>
 	@endif
@@ -29,6 +30,8 @@
             <button type="submit" id="btnSearch" class="btn btn-primary"  >Search</button>
         </form>
     </div>
+    @if($product_attributes->isEmpty())
+    @else
 	<div class="table_div">
 		<table class="table table-bordered" style="width: 100%">
 			<tr>
@@ -55,4 +58,5 @@
 			@endforeach
 		</table>
 		{!! $product_attributes->links() !!}
+	@endif
 @endsection

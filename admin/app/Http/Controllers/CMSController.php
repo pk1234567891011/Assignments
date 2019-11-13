@@ -47,7 +47,7 @@ class CMSController extends Controller
             'title'=>'required',
             'url'=>'required',
             'description'=>'required',
-            'status'=>'required|numeric'
+            'status'=>'required'
         ]);
         cms::create($request->all());
         return redirect('cms')->with('success', 'Cms created successfully');;

@@ -2,11 +2,14 @@
 @section('content')
 @if(Session::has('flash_message_success'))
 <div class="alert alert-success">
+	<button type="button" class="close" data-dismiss="alert">×</button>
+	
 	<p>{!! session('flash_message_success') !!}</p>
 </div>
 @endif
 @if(Session::has('flash_message_error'))
 <div class="alert alert-error">
+	<button type="button" class="close" data-dismiss="alert">×</button>
 	<p>{!! session('flash_message_error') !!}</p>
 </div>
 @endif
@@ -15,36 +18,39 @@
 		<div class="login-form"><!--login form-->
 			<h2>Update Account</h2>
             <a  href="{{route('address.create')}}">Add address</a>
-			<table class="table table-bordered" style="font-size:11px">
-	            <tr>
-		            <th >Name</th>
-		            <th >Address</th>
-                    <th >City</th>
-                    <th >State</th>
-                    <th >Country</th>
-                    <th >Pincode</th>
-                    <th >Mobile</th>
-		            <th width="200px">ACTION</th>
-	            </tr>
-				@foreach($add as $address)
-					<tr>
-						<td>{{$userInfo->firstname}}</td> 
-						<td>{{$address->address}}</td>
-						<td>{{$address->city}}</td>
-						<td>{{$address->state}}</td>
-						<td>{{$address->country}}</td>
-						<td>{{$address->pincode}}</td>
-						<td>{{$address->mobile}}</td>
-						<td>
-            				<a class="btn btn-xs btn-info" href="{{route('address.edit',$address->id)}}">edit</a>
-           					{!! Form::open(['method'=>'DELETE','route'=>['address.destroy',$address->id],'style'=>'display:inline'])!!}
-            				{!! Form::submit('Delete',['class'=>'btn btn-xs btn-danger']) !!}
-            				{!! Form::close()!!}
-        				</td>
-					</tr>
-				@endforeach
-							
-            </table>
+            @if($add->isEmpty())
+			@else
+				<table class="table table-bordered" style="font-size:11px">
+		            <tr>
+			            <th >Name</th>
+			            <th >Address</th>
+	                    <th >City</th>
+	                    <th >State</th>
+	                    <th >Country</th>
+	                    <th >Pincode</th>
+	                    <th >Mobile</th>
+			            <th width="200px">ACTION</th>
+		            </tr>
+					@foreach($add as $address)
+						<tr>
+							<td>{{$userInfo->firstname}}</td> 
+							<td>{{$address->address}}</td>
+							<td>{{$address->city}}</td>
+							<td>{{$address->state}}</td>
+							<td>{{$address->country}}</td>
+							<td>{{$address->pincode}}</td>
+							<td>{{$address->mobile}}</td>
+							<td>
+	            				<a class="btn btn-xs btn-info" href="{{route('address.edit',$address->id)}}">edit</a>
+	           					{!! Form::open(['method'=>'DELETE','route'=>['address.destroy',$address->id],'style'=>'display:inline'])!!}
+	            				{!! Form::submit('Delete',['class'=>'btn btn-xs btn-danger']) !!}
+	            				{!! Form::close()!!}
+	        				</td>
+						</tr>
+					@endforeach
+								
+	            </table>
+	        @endif
 			{!! $paginate->links() !!}
         </div>
 	</div>

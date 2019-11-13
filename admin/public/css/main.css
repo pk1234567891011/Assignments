@@ -2612,24 +2612,39 @@ ol.progtrckr li.progtrckr-todo:before {
   margin-bottom: 10px;
   background-color: #9fbc35;
   border-color: #9fbc35;
-  }
-  #allproduct{
+}
+#allproduct{
     right: -40px;
     position: absolute;
     top: 22px;
-  }
-  #dash{
-    position: absolute;
-    left: 20px;
-    top: 65px;
-    background-color: gray;
-    height: 26px;
-    font-size: 20px;
-  }
-  #order_records{
-    position: absolute;
-    color: blue;
-    font-size: 20px;
-    left: 425px;
-  }
- 
+}
+#dash{
+  position: absolute;
+  left: 20px;
+  top: 65px;
+  background-color: gray;
+  height: 26px;
+  font-size: 20px;
+}
+#order_records{
+  position: absolute;
+  color: blue;
+  font-size: 20px;
+  left: 425px;
+}
+#add_cat{
+  position: absolute;
+  margin-left: -203px;
+  top: 100px;
+  background-color: palevioletred;
+  color: white;
+  font-size: 17px;
+  text-decoration: none;
+}
+#pincode{
+  margin-top:10px;
+}
+#banner_image{
+  height: 311px;
+  width: 311px;
+}

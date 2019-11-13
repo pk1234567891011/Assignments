@@ -24,7 +24,7 @@
                             <th >Payment Method</th>
                             <th >Grand Total</th>
                             <th >Status</th>
-                            <th >Created on</th> 
+                            <th >Ordered on</th> 
                         </tr>  
                         @foreach($orders as $order)   
                             <tr>

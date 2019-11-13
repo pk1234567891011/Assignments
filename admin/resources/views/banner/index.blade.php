@@ -13,7 +13,7 @@
     <div class="col-sm-12">
         <div class="pull-right">
             <div class="create_div" >
-            	<a class="create_link"  href="{{route('banner.create')}}"
+            	<a id="add_cat"  href="{{route('banner.create')}}"
            			>Create Banner</a>
             </div>
         </div>
@@ -21,6 +21,8 @@
 </div>
 @if($message=Session::get('success'))
 	<div class="alert alert-success">
+		<button type="button" class="close" data-dismiss="alert">×</button>
+
 		<p>{{ $message }}</p>
 	</div>
 @endif
@@ -30,29 +32,32 @@
 	    <button type="submit" id="btnSearch" class="btn btn-primary"  >Search</button>
     </form>
 </div>
-<div class="table_div" >
-	<table id="myTable" class="table table-bordered" >
-		<tr>
-			<th >Banner</th>
-			<th >status</th>
-			<th width="200px">ACTION</th>
-		</tr>
-		@foreach($banner as $banners)
+@if($banner->isEmpty())
+@else
+	<div class="table_div" >
+		<table id="myTable" class="table table-bordered" >
 			<tr>
-				<td>
-					<img src="{{ URL::to('/') }}{{ $banners->banner_path }}" class="img-thumbnail banner_image" /
-					>
-				</td>
-				<td>{{$banners->status}}</td>
-				<td>
-					<a class="btn btn-xs btn-info" href="{{route('banner.edit',$banners->id)}}">edit</a>
-					{!! Form::open(['method'=>'DELETE','route'=>['banner.destroy',$banners->id],'style'=>'display:inline'])!!}
-					{!! Form::submit('Delete',['class'=>'btn btn-xs btn-danger']) !!}
-					{!! Form::close()!!}
-				</td>
+				<th >Banner</th>
+				<th >status</th>
+				<th width="200px">ACTION</th>
 			</tr>
-		@endforeach
-	</table>
-	{!! $banner->links() !!}
-</div>
+			@foreach($banner as $banners)
+				<tr>
+					<td>
+						<img id="banner_image" src="{{ URL::to('/') }}{{ $banners->banner_path }}" class="img-thumbnail banner_image" /
+						>
+					</td>
+					<td>{{$banners->status}}</td>
+					<td>
+						<a class="btn btn-xs btn-info" href="{{route('banner.edit',$banners->id)}}">edit</a>
+						{!! Form::open(['method'=>'DELETE','route'=>['banner.destroy',$banners->id],'style'=>'display:inline'])!!}
+						{!! Form::submit('Delete',['class'=>'btn btn-xs btn-danger']) !!}
+						{!! Form::close()!!}
+					</td>
+				</tr>
+			@endforeach
+		</table>
+		{!! $banner->links() !!}
+	</div>
+@endif
 @endsection

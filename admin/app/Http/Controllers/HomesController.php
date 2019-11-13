@@ -202,7 +202,7 @@ class HomesController extends Controller
             }
             else {
                    $user = new Users;
-                   $user->name= $facebookUser->name;
+                   $user->firstname= $facebookUser->name;
                    $user->email= $facebookUser->email;
                    $user->password= bcrypt(123456789);
                    $user->status= "active";

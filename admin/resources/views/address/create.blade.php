@@ -26,7 +26,7 @@
 									<option value="{{$country->country_name}}">{{$country->country_name}}</option>
 								@endforeach
 						</select>
-						<input type="text" name="pincode" style="margin-top:10px" id="pincode" placeholder="pincode">
+						<input type="text" name="pincode"  id="pincode" placeholder="pincode">
 						<input type="text" name="mobile" id="mobile" placeholder="mobile">
 						<a class="btn btn-xs btn-success" href="{{url('account')}}">Back</a>
 						<button type="submit" class="btn btn-default">Add</button>

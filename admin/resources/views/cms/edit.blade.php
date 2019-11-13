@@ -35,7 +35,18 @@
         <div class="col-xs-12">
             <div class="form-group">
                 <strong>Status :</strong>
-                <input type="text" class="form-control" name="status" value="{{$cms->status}}"/>            </div>
+                <select class="form-control" id="status" name="status">
+                    @if($cms->status==0)
+                    <option value="{{$cms->status}}" disabled="" selected="">
+                      InActive</option>
+                      @else
+                    <option value="{{$cms->status}}" disabled="" selected="">
+                      Active</option>
+                      @endif
+                    </option>
+                    <option value="0">InActive</option>
+                    <option value="1">Active</option>
+                    </select>
             </div>
         </div>
         <div class="col-xs-12">

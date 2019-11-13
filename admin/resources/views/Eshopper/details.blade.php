@@ -2,6 +2,7 @@
 @section('content')
 	@if(Session::has('flash_message_error'))
 		<div class="alert alert-error">
+			<button type="button" class="close" data-dismiss="alert">×</button>
 			<p>{!! session('flash_message_error') !!}</p>
 		</div>
 	@endif

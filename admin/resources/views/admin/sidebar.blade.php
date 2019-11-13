@@ -5,10 +5,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{URL::asset('AdminLTE-2.4.15/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+          <img src="{{URL::asset('AdminLTE-2.4.15/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image" style="visibility:hidden">
         </div>
         <div class="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>{{Auth::User()->firstname}}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
