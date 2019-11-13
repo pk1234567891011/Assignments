@@ -12,9 +12,13 @@
     </div>
     @if($message=Session::get('success'))
         <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">×</button>
             <p>{{ $message }}</p>
         </div>
     @endif
+   
+    @if($posts->isEmpty())
+    @else
     <div id="div_form">
     <form method="get" action="/postsearch">
     <input type="search" name="search" class="form-control" id="search"> 
@@ -22,7 +26,6 @@
     </form>
     </div>
     <div id="d1">
-   
         <button id="deleteAll"style="margin-bottom: 10px;background-color: #9fbc35;border-color: #9fbc35" class="btn btn-primary delete_all" data-url="{{ url('posts') }}">Delete</button>
     </div>
     <table class="table table-bordered" style="top:89px ;position: absolute; width: 78%;margin-left: -19px;">
@@ -56,6 +59,7 @@
     <br>
     <br>
     {!! $posts->links() !!}
+    @endif
 @endsection
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
